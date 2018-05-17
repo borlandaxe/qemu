@@ -271,6 +271,7 @@ static void pc_q35_init(MachineState *machine)
     pc_cmos_init(pcms, idebus[0], idebus[1], rtc_state);
 
     /* the rest devices to which pci devfn is automatically assigned */
+	pci_create_simple(host_bus, -1, "rfb");
     pc_vga_init(isa_bus, host_bus);
     pc_nic_init(isa_bus, host_bus);
     if (pcmc->pci_enabled) {
