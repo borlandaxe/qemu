@@ -1478,6 +1478,8 @@ static void vga_draw_graphic(VGACommonState *s, int full_update)
     bool byteswap = s->big_endian_fb;
 #endif
 
+	full_update = 1;
+
     full_update |= update_basic_params(s);
 
     s->get_resolution(s, &width, &height);
