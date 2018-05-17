@@ -39,6 +39,8 @@
 /* 16 state changes per vertical frame @60 Hz */
 #define VGA_TEXT_CURSOR_PERIOD_MS       (1000 * 2 * 16 / 60)
 
+extern MemoryRegion *gpvram;
+
 /*
  * Video Graphics Array (VGA)
  *
@@ -2187,7 +2189,7 @@ void vga_common_init(VGACommonState *s, Object *obj, bool global_vmstate)
                            &error_fatal);
     vmstate_register_ram(&s->vram, global_vmstate ? NULL : DEVICE(obj));
     xen_register_framebuffer(&s->vram);
-    s->vram_ptr = memory_region_get_ram_ptr(&s->vram);
+	s->vram_ptr = memory_region_get_ram_ptr(gpvram);
     s->get_bpp = vga_get_bpp;
     s->get_offsets = vga_get_offsets;
     s->get_resolution = vga_get_resolution;
