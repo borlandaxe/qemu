@@ -30,6 +30,8 @@ obj-$(CONFIG_CG3) += cg3.o
 
 obj-$(CONFIG_VGA) += vga.o
 
+obj-y += rfb-pci.o
+
 common-obj-$(CONFIG_QXL) += qxl.o qxl-logger.o qxl-render.o
 
 obj-$(CONFIG_VIRTIO) += virtio-gpu.o virtio-gpu-3d.o
